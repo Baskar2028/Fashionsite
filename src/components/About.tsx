@@ -1,27 +1,26 @@
 import aboutImg from '@/assets/about.png';
 
 const About = () => (
-  <section id="about">
+  <section id="about" className="about-section">
     <div className="container">
-      <h2 className="text-center display-5 fw-bold mb-2" style={{ color: '#212529' }}>
-        About <span style={{ color: '#ffc107' }}>Us</span>
-      </h2>
-      <p className="text-center mb-5" style={{ color: '#6c757d' }}>Our story & vision</p>
+      <div className="text-center mb-5" data-aos="fade-up">
+        <h2 className="section-title">About Us</h2>
+        <p className="section-subtitle">Redefining men's fashion since 2020</p>
+      </div>
       <div className="row align-items-center g-5">
-        <div className="col-lg-6 fade-in">
-          <img src={aboutImg} alt="About our fashion" className="img-fluid rounded-4 shadow" loading="lazy" width={768} height={768} />
+        <div className="col-lg-6" data-aos="fade-right">
+          <img src={aboutImg} alt="About our fashion" className="img-fluid about-img" loading="lazy" width={768} height={768} />
         </div>
-        <div className="col-lg-6 fade-in" style={{ animationDelay: '0.2s' }}>
-          <h3 className="fw-bold mb-3" style={{ color: '#212529' }}>Where Style Meets Comfort</h3>
-          <p className="lead" style={{ color: '#495057', lineHeight: 1.8 }}>
-            At LuxeWear, we believe that great style should never compromise on comfort. Our curated collection
-            blends the latest fashion trends with premium quality fabrics, giving you the confidence to
-            express your unique personality.
+        <div className="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <h3 className="about-title mb-3">Redefining Style</h3>
+          <p className="about-text">
+            Our mission is to blend style and comfort seamlessly. We follow the latest
+            trends while maintaining high quality. Step out with confidence wearing
+            apparel designed for you.
           </p>
-          <p style={{ color: '#6c757d', lineHeight: 1.8 }}>
-            From casual everyday wear to sharp formal attire, every piece in our collection is designed with
-            attention to detail, ensuring you look and feel your best. We source only the finest materials to
-            deliver quality you can trust at prices that make luxury accessible.
+          <p className="about-text">
+            From casual everyday wear to sharp formal attire, every piece in our collection
+            is crafted with attention to detail — ensuring you look and feel your absolute best.
           </p>
           <div className="row mt-4 g-3">
             {[
