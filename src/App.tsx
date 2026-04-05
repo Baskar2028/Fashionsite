@@ -1,13 +1,9 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import Fashion from "./components/Fashion";
-import Location from "./components/Location";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   useEffect(() => {
@@ -15,15 +11,12 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <Home />
-      <About />
-      <Fashion />
-      <Location />
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
