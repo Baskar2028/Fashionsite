@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-dark fixed-top ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
+      <div className="container-fluid px-4 px-lg-5">
         <a className="navbar-brand fw-bold" href="#home">
           <span style={{ color: '#ffc107' }}>LUXE</span> FASHION
         </a>
