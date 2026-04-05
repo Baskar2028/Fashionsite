@@ -382,3 +382,198 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffc107;
 }
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet landscape */
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 70px 0;
+  }
+
+  .card-img-container {
+    height: 280px;
+  }
+
+  .navbar-collapse {
+    background: #1a1a2e;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-link {
+    padding: 10px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 8px;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 5px 16px;
+    letter-spacing: 2px;
+  }
+
+  .hero-img {
+    max-width: 75%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .btn-explore {
+    padding: 12px 32px;
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .card-img-container {
+    height: 260px;
+  }
+
+  .about-img {
+    max-width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .social-icon-box {
+    padding: 18px 12px;
+  }
+
+  .social-icon-box i {
+    font-size: 1.6rem;
+  }
+
+  .contact-info-item {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .map-img {
+    border-radius: 12px;
+  }
+}
+
+/* Mobile small */
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+
+  .hero-section {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-img {
+    max-width: 90%;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .card-img-container {
+    height: 240px;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+  }
+
+  .btn-buy {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
+
+  .contact-info-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .footer {
+    padding: 20px 0;
+  }
+
+  .footer .brand {
+    font-size: 1rem;
+  }
+}
