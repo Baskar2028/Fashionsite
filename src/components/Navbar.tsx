@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import ProfileDropdown from './ProfileDropdown';
 
 const navItems = ['Home', 'About', 'Fashion', 'Location', 'Contact'];
 
@@ -30,7 +31,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav" ref={collapseRef}>
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto me-3">
             {navItems.map((item) => (
               <li className="nav-item" key={item}>
                 <a className="nav-link" href={`#${item.toLowerCase()}`} onClick={closeMenu}>
@@ -40,6 +41,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+        <ProfileDropdown />
       </div>
     </nav>
   );
