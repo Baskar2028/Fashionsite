@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { useEffect } from 'react';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [gender, setGender] = useState('');
+  const [dob, setDob] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,7 +38,7 @@ const Auth = () => {
           email,
           password,
           options: {
-            data: { display_name: displayName },
+            data: { display_name: displayName, phone, address, gender, dob },
             emailRedirectTo: window.location.origin,
           },
         });
@@ -48,6 +51,16 @@ const Auth = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const resetForm = () => {
+    setError('');
+    setSuccess('');
+    setDisplayName('');
+    setPhone('');
+    setAddress('');
+    setGender('');
+    setDob('');
   };
 
   return (
@@ -75,18 +88,72 @@ const Auth = () => {
 
         <form onSubmit={handleSubmit}>
           {!isLogin && (
-            <div className="mb-3">
-              <label className="form-label fw-medium" style={{ color: '#555' }}>Display Name</label>
-              <input
-                type="text"
-                className="form-control auth-input"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Enter your name"
-                required
-              />
-            </div>
+            <>
+              <div className="mb-3">
+                <label className="form-label fw-medium" style={{ color: '#555' }}>Full Name</label>
+                <input
+                  type="text"
+                  className="form-control auth-input"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div className="row g-3 mb-3">
+                <div className="col-6">
+                  <label className="form-label fw-medium" style={{ color: '#555' }}>Gender</label>
+                  <select
+                    className="form-select auth-input"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    required
+                  >
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div className="col-6">
+                  <label className="form-label fw-medium" style={{ color: '#555' }}>Date of Birth</label>
+                  <input
+                    type="date"
+                    className="form-control auth-input"
+                    value={dob}
+                    onChange={(e) => setDob(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label fw-medium" style={{ color: '#555' }}>Phone Number</label>
+                <input
+                  type="tel"
+                  className="form-control auth-input"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+91 98765 43210"
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label fw-medium" style={{ color: '#555' }}>Address</label>
+                <textarea
+                  className="form-control auth-input"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Enter your full address"
+                  rows={2}
+                  required
+                />
+              </div>
+            </>
           )}
+
           <div className="mb-3">
             <label className="form-label fw-medium" style={{ color: '#555' }}>Email Address</label>
             <input
@@ -124,7 +191,7 @@ const Auth = () => {
             <button
               className="btn btn-link p-0 fw-semibold"
               style={{ color: '#ffc107', textDecoration: 'none', fontSize: '0.9rem' }}
-              onClick={() => { setIsLogin(!isLogin); setError(''); setSuccess(''); }}
+              onClick={() => { setIsLogin(!isLogin); resetForm(); }}
             >
               {isLogin ? 'Sign Up' : 'Sign In'}
             </button>
