@@ -19,6 +19,7 @@ const imageMap: Record<string, string> = {
 
 const Fashion = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [products, setProducts] = useState<any[]>([]);
   const [liked, setLiked] = useState<Record<string, boolean>>({});
   const [addingToCart, setAddingToCart] = useState<Record<string, boolean>>({});
@@ -34,8 +35,19 @@ const Fashion = () => {
     setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleBuyNow = (productId: string) => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+    addToCart(productId).then(() => navigate('/checkout'));
+  };
+
   const addToCart = async (productId: string) => {
-    if (!user) return;
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
     setAddingToCart((prev) => ({ ...prev, [productId]: true }));
 
     // Upsert: if already in cart, increment quantity
