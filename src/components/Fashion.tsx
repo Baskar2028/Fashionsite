@@ -94,7 +94,7 @@ const Fashion = () => {
                   <p className="mb-1 fw-medium" style={{ color: '#888', fontSize: '0.85rem' }}>{item.name}</p>
                   <p className="product-price mb-3">₹ {Number(item.price).toLocaleString()}</p>
                   <div className="d-flex gap-2 mt-auto">
-                    <button className="btn btn-buy flex-fill">Buy Now</button>
+                    <button className="btn btn-buy flex-fill" onClick={() => handleBuyNow(item.id)}>Buy Now</button>
                     <button
                       className={`btn flex-fill ${addedToCart[item.id] ? 'btn-success' : 'btn-outline-dark'}`}
                       style={{ borderRadius: '50px', fontSize: '0.9rem', fontWeight: 600 }}
