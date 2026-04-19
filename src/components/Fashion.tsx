@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -18,6 +19,7 @@ const imageMap: Record<string, string> = {
 
 const Fashion = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [products, setProducts] = useState<any[]>([]);
   const [liked, setLiked] = useState<Record<string, boolean>>({});
   const [addingToCart, setAddingToCart] = useState<Record<string, boolean>>({});
@@ -33,8 +35,19 @@ const Fashion = () => {
     setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleBuyNow = (productId: string) => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+    addToCart(productId).then(() => navigate('/checkout'));
+  };
+
   const addToCart = async (productId: string) => {
-    if (!user) return;
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
     setAddingToCart((prev) => ({ ...prev, [productId]: true }));
 
     // Upsert: if already in cart, increment quantity
@@ -81,7 +94,7 @@ const Fashion = () => {
                   <p className="mb-1 fw-medium" style={{ color: '#888', fontSize: '0.85rem' }}>{item.name}</p>
                   <p className="product-price mb-3">₹ {Number(item.price).toLocaleString()}</p>
                   <div className="d-flex gap-2 mt-auto">
-                    <button className="btn btn-buy flex-fill">Buy Now</button>
+                    <button className="btn btn-buy flex-fill" onClick={() => handleBuyNow(item.id)}>Buy Now</button>
                     <button
                       className={`btn flex-fill ${addedToCart[item.id] ? 'btn-success' : 'btn-outline-dark'}`}
                       style={{ borderRadius: '50px', fontSize: '0.9rem', fontWeight: 600 }}
